@@ -1,131 +1,54 @@
-baseURL: https://maxtmiller.github.io
-languageCode: en-us
-title: Max's Blog
-theme: PaperMod
+name: Deploy Hugo site to Pages
 
-enableRobotsTXT: true
-buildDrafts: false
-buildFuture: false
-buildExpired: false
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
 
-minify:
-  disableXML: true
-  minifyOutput: true
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
-params:
-  env: production
-  description: "Max's personal blog where I share my thoughts, projects, and experiences in the world of technology and AI."
-  keywords: [Blog, Portfolio, PaperMod]
-  author: Max Miller
-  defaultTheme: auto
-  disableThemeToggle: false
-  ShowReadingTime: true
-  ShowShareButtons: true
-  ShowPostNavLinks: true
-  ShowBreadCrumbs: true
-  ShowCodeCopyButtons: false
-  ShowWordCount: true
-  showDescription: true
-  ShowRssButtonInSectionTermList: false
-  UseHugoToc: true
-  disableSpecial1stPost: false
-  disableScrollToTop: false
-  comments: false
-  hidemeta: false
-  hideSummary: false
-  showtoc: true
-  tocopen: false
+defaults:
+  run:
+    shell: bash
 
-  homeInfoParams: 
-    Title: "👋 Welcome to Max's Dev Lab"
-    Content: "Hi, this is Max, a second-year math student @uwaterloo. This is a place where I share my thoughts, projects, and experiences. Currently, I'm documenting my journey through neural networks, fine-tuning models, and exploring the intersection of high-performance runtimes like Bun with AI workflows. Feel free to explore and connect with me!"
-  
-  SocialIcons:
-    - name: LinkedIn
-      url: https://www.linkedin.com/in/maximiliantmiller/
-    - name: GitHub
-      url: https://github.com/maxtmiller
-    - name: X
-      url: https://x.com/maxtmiller_
-    - name: HuggingFace
-      url: https://huggingface.co/maxtmiller
-    - name: Website
-      url: https://maxtmiller.dev
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive  # Crucial for PaperMod
+          fetch-depth: 0
 
-  editPost:
-    URL: "https://github.com/maxtmiller/maxtmiller.github.io/blob/main/content"
-    Text: "Suggest Changes"
-    appendFilePath: true
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true         # PaperMod needs the extended version for SCSS
 
-  assets:
-    disableHLJS: true
-    favicon: "/favicon.ico"
-    favicon16x16: "/favicon-16x16.png"
-    favicon32x32: "/favicon-32x32.png"
-    apple_touch_icon: "/apple-touch-icon.png"
+      - name: Build with Hugo
+        run: hugo --minify
 
-  fuseOpts:
-    isCaseSensitive: false
-    shouldSort: true
-    location: 0
-    distance: 1000
-    threshold: 0.4
-    minMatchCharLength: 0
-    keys: ["title", "permalink", "summary", "content"]
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
 
-outputs:
-  home:
-    - HTML
-    - RSS
-    - JSON
-
-markup:
-  goldmark:
-    renderer:
-      unsafe: true
-    extensions:
-      passthrough:
-        delimiters:
-          block:
-            - - '\['
-              - '\]'
-            - - '$$'
-              - '$$'
-          inline:
-            - - '\('
-              - '\)'
-            - - '$'
-              - '$'
-        enable: true
-
-menu:
-  main:
-    - identifier: Posts
-      name: Posts
-      url: /posts/
-      weight: 10
-    - name: Archive
-      url: /archives/
-      weight: 20
-    - identifier: Search
-      name: Search
-      url: /search/
-      weight: 30
-    - identifier: Tags
-      name: Tags
-      url: /tags/
-      weight: 40
-    - identifier: Resume
-      name: Resume
-      # url: https://maxtmiller.dev/
-      url: /resume/
-      weight: 50
-
-services:
-  instagram:
-    disableInlineCSS: true
-  x:
-    disableInlineCSS: true
-  googleAnalytics:
-    id: G-JJZ6P30G9Z
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
