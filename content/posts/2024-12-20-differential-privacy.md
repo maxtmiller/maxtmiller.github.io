@@ -4,7 +4,7 @@ date: '2024-12-20T17:20:32-05:00'
 tags: ["Differential Privacy", "Data Anonymization", "Laplace Mechanism", "Gaussian Mechanism", "Privacy Engineering"]
 categories: ["Data Science", "Privacy & Security", "Statistics"]
 summary: "An in-depth look at Differential Privacy mechanisms, exploring the mathematical trade-offs between Laplace and Gaussian noise through a student dataset case study."
-draft: true
+draft: false
 cover:
     image: "/2024-12-20-cover.png"
     alt: "Differential Privacy"
