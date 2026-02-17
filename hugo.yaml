@@ -118,7 +118,6 @@ menu:
       weight: 40
     - identifier: Resume
       name: Resume
-      # url: https://maxtmiller.dev/
       url: /resume/
       weight: 50
 
