@@ -1,0 +1,11 @@
+# Generated folders
+public/
+resources/_gen/
+.hugo_build.lock
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Environment variables (if you use them)
+.env

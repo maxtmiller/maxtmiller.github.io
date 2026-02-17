@@ -1,0 +1,131 @@
+baseURL: https://maxtmiller.github.io
+languageCode: en-us
+title: Max's Blog
+theme: PaperMod
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+
+params:
+  env: production
+  description: "Max's personal blog where I share my thoughts, projects, and experiences in the world of technology and AI."
+  keywords: [Blog, Portfolio, PaperMod]
+  author: Max Miller
+  defaultTheme: auto
+  disableThemeToggle: false
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: false
+  ShowWordCount: true
+  showDescription: true
+  ShowRssButtonInSectionTermList: false
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: true
+  tocopen: false
+
+  homeInfoParams: 
+    Title: "👋 Welcome to Max's Dev Lab"
+    Content: "Hi, this is Max, a second-year math student @uwaterloo. This is a place where I share my thoughts, projects, and experiences. Currently, I'm documenting my journey through neural networks, fine-tuning models, and exploring the intersection of high-performance runtimes like Bun with AI workflows. Feel free to explore and connect with me!"
+  
+  SocialIcons:
+    - name: LinkedIn
+      url: https://www.linkedin.com/in/maximiliantmiller/
+    - name: GitHub
+      url: https://github.com/maxtmiller
+    - name: X
+      url: https://x.com/maxtmiller_
+    - name: HuggingFace
+      url: https://huggingface.co/maxtmiller
+    - name: Website
+      url: https://maxtmiller.dev
+
+  editPost:
+    URL: "https://github.com/maxtmiller/maxtmiller.github.io/blob/main/content"
+    Text: "Suggest Changes"
+    appendFilePath: true
+
+  assets:
+    disableHLJS: true
+    favicon: "/favicon.ico"
+    favicon16x16: "/favicon-16x16.png"
+    favicon32x32: "/favicon-32x32.png"
+    apple_touch_icon: "/apple-touch-icon.png"
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      passthrough:
+        delimiters:
+          block:
+            - - '\['
+              - '\]'
+            - - '$$'
+              - '$$'
+          inline:
+            - - '\('
+              - '\)'
+            - - '$'
+              - '$'
+        enable: true
+
+menu:
+  main:
+    - identifier: Posts
+      name: Posts
+      url: /posts/
+      weight: 10
+    - name: Archive
+      url: /archives/
+      weight: 20
+    - identifier: Search
+      name: Search
+      url: /search/
+      weight: 30
+    - identifier: Tags
+      name: Tags
+      url: /tags/
+      weight: 40
+    - identifier: Resume
+      name: Resume
+      # url: https://maxtmiller.dev/
+      url: /resume/
+      weight: 50
+
+services:
+  instagram:
+    disableInlineCSS: true
+  x:
+    disableInlineCSS: true
+  googleAnalytics:
+    id: G-JJZ6P30G9Z

@@ -1,0 +1,47 @@
+/* Target the navigation menu links */
+#menu a:hover {
+  color: #ababab !important;
+  font-weight: 500;
+}
+
+#menu .active {
+  font-weight: 600;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #7633c5;
+}
+
+/* Target the social media icons */
+.social-icons a:hover svg {
+  color: #ababab !important;
+  transition: all 0.2s ease;
+}
+
+/* Set a constant padding so the layout never shifts */
+button#theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 8px;
+  background: transparent;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+  border: none;
+}
+
+/* 2. The Hover State: Only change the background color */
+button#theme-toggle:hover {
+  background-color: var(--code-bg);
+  cursor: pointer;
+}
+
+[data-theme="light"] button#theme-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.2); /* A subtle soft grey */
+}
+
+/* 3. Optional: Make the icon inside slightly more vibrant on hover */
+button#theme-toggle:hover svg {
+  /* fill: var(--secondary); */
+  transform: scale(1.1);
+}
