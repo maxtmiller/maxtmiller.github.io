@@ -31,10 +31,10 @@ There are two primary ways to apply this:
 1.  **Local Differential Privacy:** Noise is added to the data *before* it enters the database. This offers the strongest privacy because even the data curator never sees the raw info.
 2.  **Global Differential Privacy:** The curator has the raw data but adds noise to the *output* of any query. This is generally more accurate but requires you to trust the person holding the data.
 
-### The Privacy Parameters: $\epsilon$ and $\delta$
+### The Privacy Parameters: ε and δ
 The "strength" of the privacy is measured by two variables:
-*   **Epsilon ($\epsilon$):** This represents the privacy loss. A **smaller epsilon** means more noise and higher privacy, while a **larger epsilon** means less noise and more accurate (but less private) data.
-*   **Delta ($\delta$):** This is the probability that the privacy guarantee might accidentally be violated.
+*   **Epsilon (ε):** This represents the privacy loss. A **smaller epsilon** means more noise and higher privacy, while a **larger epsilon** means less noise and more accurate (but less private) data.
+*   **Delta (δ):** This is the probability that the privacy guarantee might accidentally be violated.
 
 ![Comparison of Original and Differentially Private Dataset](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Laplace_pdf_mod.svg/1920px-Laplace_pdf_mod.svg.png)
 *Figure 1: Diagram of the Laplace distribution showing how noise varies by scale.*
@@ -67,8 +67,8 @@ The Gaussian (or Normal) distribution is often preferred for more complex data o
 To see these mechanisms in action, a study was conducted using a dataset of 21 students. The goal was to calculate the **average age** while keeping individual identities private.
 
 The results were telling:
-*   **At $\epsilon = 1$ (Lower Privacy):** The **Laplace mechanism** was 97% accurate, whereas the **Gaussian mechanism** only achieved 69% accuracy.
-*   **At $\epsilon = 0.2$ (Higher Privacy):** Both lost accuracy, but Laplace remained superior at 81% vs. Gaussian’s 55%.
+*   **At ε = 1 (Lower Privacy):** The **Laplace mechanism** was 97% accurate, whereas the **Gaussian mechanism** only achieved 69% accuracy.
+*   **At ε = 0.2 (Higher Privacy):** Both lost accuracy, but Laplace remained superior at 81% vs. Gaussian’s 55%.
 
 In this specific case, the Laplace distribution was the clear winner because it required a lower standard deviation of noise to satisfy the privacy requirements for a single query.
 
