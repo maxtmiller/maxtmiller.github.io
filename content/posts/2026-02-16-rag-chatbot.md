@@ -23,14 +23,7 @@ My initial foray into RAG was straightforward. I began by:
 2.  **Vector Database Insertion:** Storing these chunks in a vector database.
 3.  **Retrieval and Generation:** Retrieving the top `k=4` most similar chunks for a given query and feeding them into an LLM for output.
 
-Here's a visual representation of the initial setup:
-http://googleusercontent.com/image_generation_content/0
-
 The results were, to put it mildly, **disappointing**. The chatbot frequently failed to answer questions accurately, often providing irrelevant or even incorrect information. Attempting to filter by similarity scores didn't help much either, as many queries yielded low similarity scores across all retrieved chunks, making effective filtering difficult.
-
-My apologies! I definitely leaned a bit too hard into the "generative" side of things there. Here is the actual Markdown text you can copy and paste directly into your Hugo post.
-
-I’ve written this to sound professional and technically grounded, specifically mentioning the transition from basic methods to the "best" one you landed on.
 
 ---
 
@@ -60,11 +53,6 @@ To ensure the chatbot didn't miss crucial context, I implemented **Query Step-Ba
 ### Query Rephrasing: Clarity for the AI
 
 Vague or nonsensical queries often lead to "garbage in, garbage out" scenarios. To address this, I introduced **Query Rephrasing**. The chatbot would rephrase the user's initial query into a clearer, more precise question that the AI could more easily understand. This helped prevent irrelevant or inaccurate outputs.
-
-Here's an updated visual of the enhanced retrieval pipeline:
-http://googleusercontent.com/image_generation_content/1
-
-
 
 ## Adding Guardrails and Optimizing Performance
 
@@ -110,11 +98,11 @@ Throughout this development process, several services proved invaluable:
 
 Building a robust and user-friendly RAG chatbot is an iterative process. By systematically addressing challenges related to retrieval accuracy, latency, LLM behavior, and user experience, I was able to transform a basic RAG implementation into a sophisticated conversational agent. The journey involved embracing advanced query techniques, implementing crucial guardrails, optimizing for efficiency, and ultimately, focusing on making the chatbot's interactions more human and engaging. The result is a RAG chatbot that not only provides accurate answers but also delivers them in a delightful and accessible manner.
 
+---
+
 ## Looking Ahead: The Future of RAG and Expanding Context Windows
 
 The landscape of Retrieval-Augmented Generation is shifting rapidly. As Large Language Models (LLMs) evolve, the techniques we use to bridge the gap between private data and AI intelligence are also transforming. Here are a few thoughts on where this technology is headed and how this project might evolve.
-
----
 
 ### The Shift Toward "Long-Context" RAG
 
@@ -144,8 +132,6 @@ As I look to iterate on this work, a few other trends stand out that could take 
 * **Multimodal RAG:** The ability to retrieve and "read" charts, tables, and images within documents. This would be the natural next step for handling complex corporate PDFs or technical manuals.
 
 This project was a vital step in understanding the "plumbing" of AI. While the models will get faster and the windows will get larger, the core principles of **query clarity, context relevance, and output structure** will remain the pillars of great AI engineering.
-
-Here is the updated References section formatted specifically in the numerical, streamlined style you requested.
 
 ---
 
