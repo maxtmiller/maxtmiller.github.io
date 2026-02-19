@@ -42,7 +42,7 @@ params:
 
   homeInfoParams: 
     Title: "👋 Welcome to Max's Dev Lab"
-    Content: "Hi, this is Max, a second-year math student @uwaterloo. This is a place where I share my thoughts, projects, and experiences. Currently, I'm documenting my journey through neural networks, fine-tuning models, and exploring the intersection of high-performance runtimes like Bun with AI workflows. Feel free to explore and connect with me!"
+    Content: "This is a space dedicated to sharing my thoughts, projects, and experiences. I document my exploration into machine learning architecture, intelligent systems, and the core computer science principles that power modern systems. Feel free to explore and connect with me!"
   
   SocialIcons:
     - name: LinkedIn
